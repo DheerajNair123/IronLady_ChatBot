@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron Lady Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <img src="https://d1ixtxt2uzttul.cloudfront.net/images/logo-black-bg.png" alt="Iron Lady Logo" class="page-logo">
+    <div class="chatbox">
+        <div class="chatbox-header">
+            <h3 style="display:inline-block;">ChatBot</h3>
+        </div>
+        <div class="chatbox-body" id="chatbox-body">
+            <!-- Chat history will appear here -->
+        </div>
+        <div class="chatbox-footer">
+            <input type="text" id="user-input" placeholder="" />
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            let userInput = document.getElementById("user-input").value;
+            if (userInput) {
+                document.getElementById("chatbox-body").innerHTML += "<div class='user-msg'>" + userInput + "</div>";
+                document.getElementById("user-input").value = "";
+
+                fetch("/ask", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        user_input: userInput,
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("chatbox-body").innerHTML += "<div class='bot-msg'>" + data.response + "</div>";
+                    document.getElementById("chatbox-body").scrollTop = document.getElementById("chatbox-body").scrollHeight;
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+
+        document.getElementById("send-btn").addEventListener("click", sendMessage);
+        document.getElementById("user-input").addEventListener("keydown", event => {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
