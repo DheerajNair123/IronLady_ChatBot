@@ -3,15 +3,13 @@ from flask import Flask, render_template, request, jsonify
 import google.generativeai as genai
 import os
 
-# Initialize Flask app
 app = Flask(__name__)
 
 
-# Set Gemini API Key (replace with your actual Gemini API key)
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyAfvdrhX6IVC0sWlE2w8z9BD08DOMefJhQ")
-genai.configure(api_key=GEMINI_API_KEY)
+API = os.environ.get("GEMINI_API_KEY", "AIzaSyAfvdrhX6IVC0sWlE2w8z9BD08DOMefJhQ")
+genai.configure(api_key=API)
 
-# Function to interact with Gemini API and provide FAQ answers
+
 def get_bot_response(user_input):
     user_input_lower = user_input.lower()
 
@@ -37,12 +35,11 @@ def get_bot_response(user_input):
         print(f"Error: {e}")
         return "Sorry, I couldn't process your request."
 
-# Route to serve the chat interface
+
 @app.route("/")
 def home():
     return render_template("index.html")
 
-# Route to handle chat interactions
 @app.route("/ask", methods=["POST"])
 def ask():
     user_input = request.json.get("user_input")
@@ -51,3 +48,4 @@ def ask():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
