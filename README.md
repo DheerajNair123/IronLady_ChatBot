@@ -25,8 +25,8 @@ SimpleApp/
 
 ### 1. Clone the Repository
 ```
-git clone <repo-url>
-cd IronLady/Chatbot
+git clone [<repo-url>](https://github.com/DheerajNair123/IronLady_ChatBot.git)
+cd IronLady_Chatbot
 ```
 
 ### 2. Install Dependencies
