@@ -66,4 +66,4 @@ The app will be available at [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 - Update the UI in `templates/index.html` and `static/style.css` as needed.
 
 ## License
-This project is for educational/demo purposes. Please add your own license as appropriate.
+This project is for demo purposes. 
