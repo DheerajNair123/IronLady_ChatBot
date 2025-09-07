@@ -2,6 +2,9 @@
 
 This project is a simple FAQ chatbot web application built with Flask and Google Gemini API. It provides instant answers to frequently asked questions about Iron Lady's programs and can handle general queries using the Gemini generative AI model.
 
+## Implementation
+[Link](https://youtu.be/CyPBkS_HAGU)
+
 ## Features
 - Web-based chat interface
 - Predefined FAQ answers for common questions
