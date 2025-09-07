@@ -25,7 +25,7 @@ SimpleApp/
 
 ### 1. Clone the Repository
 ```
-git clone [<repo-url>](https://github.com/DheerajNair123/IronLady_ChatBot.git)
+git clone https://github.com/DheerajNair123/IronLady_ChatBot.git
 cd IronLady_Chatbot
 ```
 
